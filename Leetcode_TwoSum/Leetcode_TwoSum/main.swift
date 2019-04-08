@@ -25,6 +25,26 @@ func twoSum(nums: [Int], target: Int) -> (index1: Int, index2: Int) {
 
 }
 
+/// 错误算法
+func twoSumV2(nums: [Int], target: Int) -> (index1: Int, index2: Int) {
+    var lookup = [Int : Int]()
+
+    for (index, value) in nums.enumerated() {
+        lookup[value] = index
+    }
+
+    var result = (-1, -1)
+
+    for (index, value) in nums.enumerated() {
+        if lookup.keys.contains(target - value) {
+            result = (index, lookup[target - value]!)
+            return result
+        }
+    }
+
+    return result
+}
+
 let result = twoSum(nums: [3, 2, 4], target: 6)
 
 print(result)
